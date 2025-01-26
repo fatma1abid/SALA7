@@ -1,0 +1,103 @@
+
+            <div class="content-wrapper">
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title">Employé</h4>
+                        <div class="d-flex justify-content-between">
+                          <p class="card-description">
+                            employés <code>.Liste des employés</code>
+                          </p>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="addForm()">
+                              Ajouter employé
+                          </button>
+                      </div>
+                        <div class="table-responsive" appPagination [items]="items" [itemsPerPage]="itemsPerPage" (paginatedItems)="updateItems($event)" (currentPage)="updateCurrentPage($event)">
+                          <table class="table" >
+                            <thead>
+                              <tr>
+                                <th>Nom et Prenom</th>
+                                <th>Cin</th>
+                                <th>Email</th>
+                                <th>Date de naissance</th>
+                                <th>Banque</th>
+                                <th>Etat</th>
+                                <th>Actions</th>
+
+
+                              </tr>
+                            </thead>
+                            <tbody *ngFor="let user of paginatedUsers;" >
+                              <tr>
+                                <td>{{user.nomEt}} {{user.prenomEt}}</td>
+                                <td>{{user.cin}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.dateNaissance |date }}</td>
+                                <td>{{user.Universite}}</td>
+
+                                <td>
+                                    <label class="badge"  [ngClass]="{'badge-danger': user.etat === 'bloqué', 'badge-success': user.etat === 'validé','badge-info': user.etat === 'confirmé','badge-Warning': user.etat === 'non confirmé'}">
+                                        {{user.etat}}</label></td>
+                                <td>
+                                <button *ngIf="user.etat!='validé'" type="button" class="btn btn-success btn-rounded btn-icon"(click)="changerEtat(user,'validé')">
+                                    <i class="ti-angle-down"></i>
+
+                                  </button>
+                                <button *ngIf="user.etat!='bloqué'"  type="button" class="btn btn-danger btn-rounded btn-icon" (click)="changerEtat(user,'bloqué')">
+                                    <i class="ti-close"></i>
+                                  </button>
+
+                                  <button type="button" class="btn btn-outline-secondary btn-rounded btn-icon" data-toggle="modal" data-target="#exampleModal" (click)="editModal(user)">
+                                    <i class="ti-pencil"></i>
+                                  </button>
+                                  <button *ngIf="user.etat!='archivé'"  type="button" class="btn btn-danger btn-rounded btn-icon" data-toggle="modal" data-target="#confirmationModal" (click)="selectUser(user)">
+                                    <i class="ti-trash"></i>
+                                  </button>
+                                  </td>
+                              </tr>
+
+                            </tbody>
+
+                          </table>
+
+                        </div>
+
+                      </div>
+                      <div class="d-flex justify-content-center">
+                        <button class="btn btn-primary" (click)="setPage(currentPage - 1)" [disabled]="currentPage === 1">Précédent</button>
+                        <span>{{ currentPage }} / {{ totalPages }}</span>
+                        <button class="btn btn-primary" (click)="setPage(currentPage + 1)" [disabled]="currentPage === totalPages">Suivant</button>
+                      </div>
+                    </div>
+
+                  </div>
+                  <app-user-form [isEdit]="isEdit" [etudiant]="selectedForUpdate" (isChange)="rechargeEtudiants()"></app-user-form>
+                  <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Supprimer Etudiant</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="card">
+                              <div class="card-body">
+                                <p>Êtes-vous sûr de vouloir supprimer {{selectedUser?.nomEt}} {{selectedUser?.prenomEt}} ?</p>
+                                <div class="d-flex justify-content-space-between">
+
+                                <button class="btn btn-success" (click)="changerEtat(selectedUser,'archivé')">Confirmer</button>
+                                <button class="btn btn-danger" data-dismiss="modal" aria-label="Close">Annuler</button>
+
+                               </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+            </div>

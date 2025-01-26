@@ -1,0 +1,34 @@
+<div >
+    <div >
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card-body">
+            <div class="position-relative margin-left-50p">
+              <form #updateF="ngForm"  >
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <label class="fa fa-user-o" aria-hidden="true">Nom Foyer</label>
+                  <input type="text"   [(ngModel)]= "foyer.nomFoyer" [value]="formData.nomFoyer" placeholder="Nom de Foyer" name="nomFoyer" class="form-control" required="">
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-4">
+                  <label class="fa fa-info" aria-hidden="true">Capacité de Foyer</label>
+                  <input type="text" [(ngModel)]= "foyer.capaciteFoyer" [value]="formData.capaciteFoyer"  minlength="4" #t="ngModel" placeholder="Capacité de Foyer" name="capaciteFoyer" class="form-control" required="">
+                </div>
+                <div *ngIf="t.errors?.['minlength']" class="alert ">
+                 <p style="color: brown;"> la capacite de Foyer doit etre superieur ou egale a 1000 </p>
+                
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <label>Université</label>
+                  <input type="text" [(ngModel)]= "foyer.universite" disabled="" placeholder="Nom de l'université" name="universite" class="form-control">
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                
+             
+                </div>
+                <div class="mt-2">
+                  <button type="submit" (click)="updateFoyer()" [disabled]="updateF.invalid" style="margin-left: 100px;" class="btn btn-success">Modifier</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>  

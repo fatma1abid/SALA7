@@ -1,0 +1,125 @@
+<div class="content-wrapper">
+  <div class="col-md-6 grid-margin transparent">
+    <div class="row_stat">
+      <div class="col-md-6 mb-4 stretch-card transparent">
+        <div class="card card-tale">
+          <div class="card-body">
+            <p class="mb-4">Nombre demandes d'emprunts totale</p>
+            <p class="fs-30 mb-2">{{nbreEmprunts}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4 stretch-card transparent">
+        <div class="card card-dark-blue">
+          <div class="card-body">
+            <p class="mb-4">Nombre demandes d'emprunts en cours</p>
+            <p class="fs-30 mb-2">{{nbreEmpruntsEncours}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4 stretch-card transparent">
+        <div class="card card-light-blue">
+          <div class="card-body">
+            <p class="mb-4">Nombre demandes d'emprunts accepté</p>
+            <p class="fs-30 mb-2">{{nbreEmpruntsAccepte}}</p>
+          </div>
+        </div>
+      </div>
+     <!-- <div class="col-md-6 mb-4 stretch-card transparent">
+        <div class="card card-light-danger">
+          <div class="card-body">
+            <p class="mb-4">Le titre du livre le plus emprunté</p>
+            <p class="livre-titre mb-2">{{livre.titre | titlecase}}</p>
+          </div>
+        </div>
+      </div>-->
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex mb-3">
+              <h4 class="card-title">Liste des demandes d'emprunts</h4>
+              <button class="btn btn-info ml-auto" style="color: white;" (click)="ajouter()" >Ajouter emprunt</button>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Rechercher" aria-label="Rechercher" [formControl]="searchCtrl" >
+                <div class="input-group-append">
+                  <button class="btn btn-sm btn-secondary" type="button">Search</button>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="msg">
+              <div class="alert alert-success" role="alert">
+                  {{msg}}
+              </div>
+            </div>
+
+            <div *ngIf="error">
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead >
+                  <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Date début d'emprunt</th>
+                    <th>Date fin d'emprunt</th>
+                    <th>Livre</th>
+                    <th>Demande</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr *ngFor="let empruntDetails of empruntDetailsList " appBackground>
+                    <td>  {{empruntDetails.user.nomEt | titlecase}}   </td>
+                    <td>{{empruntDetails.user.prenomEt | titlecase}} </td>
+                    <td><span class="text-success">{{empruntDetails.user.email}}</span> </td>
+
+                    <td>{{empruntDetails.emprunt.dateDebutEmprunt| date: 'd MMMM yyyy'}}</td>
+                    <td>{{ empruntDetails.emprunt.dateFinEmprunt| date: 'd MMMM yyyy'}}</td>
+                    <td><span class="text-primary">{{empruntDetails.livre.titre | titlecase}}</span></td>
+                    <td>
+                        <div *ngIf="empruntDetails.emprunt.etat === 'non valide' ">
+                            <div class="badge badge-warning">En cours</div>
+                        </div>
+                        <div *ngIf="empruntDetails.emprunt.etat === 'valide' ">
+                             <div class="badge badge-success">Accepté</div>
+                        </div>
+                    </td>
+                    <td style="width: 20%;">
+
+                        <button type="button" [hidden]="empruntDetails.emprunt.etat === 'valide'" (click)="accepterDemandeEmprunt(empruntDetails.emprunt.idEmprunt ,empruntDetails.user.email,empruntDetails.livre.idLivre)" class="btn btn-success btn-rounded btn-icon">
+                            <i class="mdi mdi-check"></i>
+                        </button>
+                        <button type="button" [hidden]="empruntDetails.emprunt.etat === 'valide'" (click)="refuserDemandeEmprunt(empruntDetails.emprunt.idEmprunt,empruntDetails.livre.idLivre,empruntDetails.user.idEtudiant)" class="btn btn-danger btn-rounded btn-icon ml-3">
+                            <i class="mdi mdi-close"></i>
+                        </button>
+
+                        <button type="button" [hidden]="empruntDetails.emprunt.etat === 'non valide'" (click)="openModalModification(empruntDetails.emprunt.idEmprunt,empruntDetails.livre.idLivre)" class="btn btn-warning btn-rounded btn-icon">
+                          <i class="mdi mdi-grease-pencil"></i>
+                      </button>
+                      <button type="button" [hidden]="empruntDetails.emprunt.etat === 'non valide'" (click)="openModalSuppression(empruntDetails.emprunt.idEmprunt,empruntDetails.livre.idLivre)" class="btn btn-danger btn-rounded btn-icon ml-3">
+                          <i class="mdi mdi-delete"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>    

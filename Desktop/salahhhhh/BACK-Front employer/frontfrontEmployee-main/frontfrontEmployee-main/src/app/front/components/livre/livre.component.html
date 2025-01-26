@@ -1,0 +1,13 @@
+    <div class="card">
+        <div class="card-body">
+        <div class="d-flex flex-column justify-content-between">
+        <img [src]="urlImage + '/' + livre.idLivre + '/' + livre.image" alt="Livre Image" width="135" height="150">
+        <p class="card-title mt-3 d-flex justify-content-center align-items-center text-center grid-margin">{{livre.titre}}</p>
+        <div *ngIf="livre.disponibilite === true" class="d-flex justify-content-center">  <p class="badge badge-success">Disponible</p> </div>
+        <div *ngIf="livre.disponibilite === false" class="d-flex justify-content-center">  <p class="badge badge-danger">Non disponible</p> </div>
+        <button class="btn btn-success btn-rounded btn-fw" (click)="openModalDetails(livre.idLivre)">Details</button>
+        </div>
+     </div>
+    </div>
+
+

@@ -1,0 +1,118 @@
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin">
+            <div class="container-scroller">
+                
+                <div class="container-fluid page-body-wrapper full-page-wrapper">
+                <div class="content-wrapper d-flex align-items-center auth px-0">
+                    <div class="row w-100 mx-0">
+                    <div class="col-lg-5  mx-auto">
+                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                        <div class="brand-logo">
+                            <img src="../../../../../assets/images/logo.svg" alt="logo">
+                        </div>
+                        <h4>Nouveau ici ?</h4>
+                        <h6 class="font-weight-light"> S'inscrire est facile. Cela ne prend que quelques étapes</h6>
+                        <form class="pt-3" [formGroup]="registerForm" (ngSubmit)="onSubmitForm()">
+                            <div class="form-group">
+                            <input  formControlName="nomEt" type="text" class="form-control form-control-lg"  placeholder="Nom">
+                            <div *ngIf="myControls['nomEt'].touched && myControls['nomEt'].invalid">
+                                 <div *ngIf="myControls['nomEt'].errors && myControls['nomEt'].errors['required']" class="error">
+                                    nom obligatoire
+                                 </div>
+                            </div>
+                            </div>
+                            <div class="form-group">
+                                <input  formControlName="prenomEt" type="text" class="form-control form-control-lg"  placeholder="Prenom">
+                                    <div *ngIf="myControls['prenomEt'].touched && myControls['prenomEt'].invalid">
+                                        <div *ngIf="myControls['prenomEt'].errors && myControls['prenomEt'].errors['required']" class="error">
+                                        prenom obligatoire
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                <input type="number" class="form-control" formControlName="cin" placeholder="Cin" />
+                                <div *ngIf="myControls['cin'].touched && myControls['cin'].invalid">
+                                    <div *ngIf="myControls['cin'].errors && myControls['cin'].errors['required']" class="error">
+                                    Cin obligatoire
+                                    </div>
+                                    <div *ngIf="myControls['cin'].errors && myControls['cin'].errors['pattern']" class="error">
+                                        Cin doit etre composé de 8 chiffres
+                                    </div>
+                                </div>
+                                </div>
+                            <div class="form-group">
+                            <input type="email" formControlName="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email">
+                            <div *ngIf="myControls['email'].touched && myControls['email'].invalid" >
+                                <div *ngIf="myControls['email'].errors && myControls['email'].errors['required']" class="error">
+                                  email Obligatoir
+                                </div>
+                                <div *ngIf="myControls['email'].errors && myControls['email'].errors['pattern']" class="error">
+                                    veuillez entrer un email valide
+                                </div>
+                              </div>
+                            </div>
+                       
+                            <div class="form-group">
+                            <input type="password" formControlName="password" class="form-control form-control-lg" placeholder="Mot de passe">
+                            <div *ngIf="myControls['password'].touched && myControls['password'].invalid" >
+                                <div *ngIf="myControls['password'].errors && myControls['password'].errors['required']" class="error">
+                                    Mot de passe Obligatoire
+                                </div>
+                                <div *ngIf="myControls['password'].errors && myControls['password'].errors['pattern']" class="error">
+                                    Le mot de passe doit contenir au moins une lettre minuscule, une lettre majuscule, un chiffre et doit avoir une longueur d'au moins 8 caractères.
+
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" formControlName="confirmPassword" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Comfirme Mot de passe">
+                                <div *ngIf="myControls['confirmPassword'].touched && myControls['confirmPassword'].invalid" >
+                                    <div *ngIf="myControls['confirmPassword'].errors && myControls['confirmPassword'].errors['required']" class="error">
+                                        Confirm mot de passe Obligatoire
+                                    </div>
+                                    <div *ngIf="myControls['confirmPassword'].errors && myControls['confirmPassword'].errors['matching']" class="error">
+                                        Les mots de passe ne correspondent pas.
+                                    </div>
+                                  </div>
+                                </div>
+                            <div class="mb-4">
+                            <div class="form-check">
+                                <label class="form-check-label text-muted">
+                                <input type="checkbox" class="form-check-input"formControlName="acceptTerms">
+                                J'accepte toutes les conditions générales.
+                                <i class="input-helper"></i>
+                                </label>
+                            </div>
+                            </div>
+                            <div class="mt-3">
+                            <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" [disabled]="registerForm.invalid" >S'inscrire</button>
+                            </div>
+                            <div class="text-center mt-4 font-weight-light">
+                                Vous avez déjà un compte? <a class="text-primary" routerLink="/front/login">S'authentifier</a>
+                            </div>
+                        </form>
+                        <app-spinner-modal
+                        [showSpinner]="showSpinner"
+                        [spinnerMessage]="spinnerMessage"
+                        [showMessage]="showMessage"
+                        [successMessage]="successMessage"
+                        [errorMessage]="errorMessage"
+                        (closeModal)="showModal = false"
+                      ></app-spinner-modal>
+                        </div>
+
+                    </div>
+                
+                    <!--<app-confirmation-sent-modal *ngIf="isModalVisible" [modalId]="'confirmationModal'" [message]="emailSentMessage" [isModalVisible]="isModalVisible"  (closeModalEvent)="onCloseModal()"></app-confirmation-sent-modal>-->
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+                </div>
+                <!-- page-body-wrapper ends -->
+            </div>
+        </div>    
+    </div>
+</div>
+

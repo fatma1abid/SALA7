@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>Ajouter une banque</h2>
+  <form [formGroup]="universiteForm" (ngSubmit)="ajouterUniversite()">
+    <div class="form-group">
+      <label for="nomUniversite">Nom de la banque:</label>
+      <input type="text" id="nomUniversite" formControlName="nomUniversite" required>
+      <div *ngIf="universiteForm.get('nomUniversite')!.hasError('capitalize')">
+        Le nom de la banque doit commencer par une lettre majuscule.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="adresse">Adresse:</label>
+      <input type="text" id="adresse" formControlName="adresse" required>
+      <div *ngIf="universiteForm.get('adresse')!.hasError('capitalize')">
+        L'adresse doit commencer par une lettre majuscule.
+      </div>
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="etatUniversite">État de la banque:</label>
+      <select id="etatUniversite" formControlName="etatUniversite" required>
+        <option value="" disabled selected>Choisissez un état</option>
+        <option value="Public">Public</option>
+        <option value="Prive">Prive</option>
+      </select>
+      <div *ngIf="universiteForm.get('etatUniversite')?.hasError('required')">
+        Veuillez choisir un état pour la banque.
+      </div>
+    </div>
+
+
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Ajouter banque</button>
+    </div>
+  </form>
+</div>

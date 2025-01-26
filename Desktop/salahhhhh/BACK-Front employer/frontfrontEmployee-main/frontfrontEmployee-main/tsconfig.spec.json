@@ -1,0 +1,19 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "types": [
+<<<<<<< HEAD
+      "jasmine",
+      "@angular/localize"
+=======
+      "jasmine"
+>>>>>>> b432f54f84188a9865f5c0abb2f26704f1cb5bb5
+    ]
+  },
+  "include": [
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
+  ]
+}

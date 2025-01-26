@@ -1,0 +1,50 @@
+<div style="" class="row">
+  <div appZoomFoyer class="col-md-4"
+    style="box-shadow: 0 20px 20px rgba(88, 86, 86, 0.92); border-radius: 20px; margin-left: 220px; width: 550px; height: 520px; background-image: url('../../assets/img/etu.gif') ; ">
+    <div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card-body container-fluid " style="margin-top: 50px; margin-left: 120px; ">
+            <div class="position-relative ">
+              <form [formGroup]="formBuild">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <label class="my-2" aria-hidden="true">Nom Bloc</label>
+                  <input type="text" [(ngModel)]="bloc.nomBloc" placeholder="Nom de Bloc " formControlName="nomBloc"
+                    class="form-control ">
+                </div>
+                <div *ngIf="formBuild.get('nomBloc')?.valid && formBuild.get('nomBloc')?.untouched"
+                  style="color: brown; width:40%" class=" alert alert-danger my-2">
+                  nom de bloc est un champ obligatoire
+
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-4">
+                  <label class="my-2" aria-hidden="true">Capacité de Bloc</label>
+                  <input type="number" [(ngModel)]="bloc.capaciteBloc" placeholder="Capacité de Bloc"
+                    formControlName="capaciteBloc" class="form-control">
+                </div>
+                <div *ngIf="formBuild.get('capaciteBloc')?.valid && formBuild.get('capaciteBloc')?.untouched"
+                  style="color: brown; width:50%; margin-right: 150px;" class=" alert alert-danger my-2 r">
+                  capaciteBloc est un champ obligatoire avec un capacité superieur de 100 etudiants
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <label>nombre chambres</label>
+                  <select type="text" placeholder="liste des chambres" name="liste des chambres" class="form-control">
+                    <option name="chambres"></option>
+                  </select>
+                </div>
+
+
+                <div class="mt-2">
+                  <button type="submit" (click)="addBloc()" style="margin-left: 20px;" class="btn btn-success">Ajouter
+                    un Bloc </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+ 
+</div>

@@ -1,0 +1,44 @@
+<div class="container">
+        <h2 >Liste des banques</h2>
+        <input type="text" [(ngModel)]="nomUniversiteRecherche" placeholder="Rechercher par nom" class="form-control mb-3" />
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>État</th>
+                <th>bouton</th>
+              </tr>
+            </thead>
+            <tbody>
+<tr *ngFor="let universite of universites | filter: nomUniversiteRecherche:'nomUniversite'">
+                  <td>{{ universite.nomUniversite }}</td>
+                <td>{{ universite.adresse }}</td>
+                <td>
+                  <label [ngClass]="{
+                    'text-primary': universite.etatUniversite === 'Public',
+                    'text-danger': universite.etatUniversite === 'Prive'
+                  }">
+                    {{ universite.etatUniversite }}
+                  </label>
+                    </td>
+                <td>
+                <button type="button" class="btn btn-dark btn-icon-text mr-2" fdprocessedid="2mcgwr" [routerLink]="['/admin/universite/update', universite.idUniversite]">
+                  Modifier
+                  <i class="ti-file btn-icon-append"></i>
+                </button>
+                <button matTooltip="Edit Task" class="btn btn-info" (click)="supprimerUniversite(universite.idUniversite, universite.nomUniversite)">
+                  Supprimer
+                </button>
+                </td>
+              </tr>
+  </tbody>
+  </table>
+    <button type="button" class="btn btn-success mb-3" [routerLink]="['/admin/universite/add']">
+      Ajouter banque
+    </button>
+
+    <app-universite-add [universiteParDefaut]="universiteParDefaut"></app-universite-add>
+
+  </div>

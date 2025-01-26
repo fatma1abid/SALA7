@@ -1,0 +1,67 @@
+.bg-nude1 {
+    background-color: #f2d6b3; /* Exemple de couleur nude */
+  }
+  
+  .bg-nude2 {
+    background-color: #d2a679; /* Exemple de couleur nude */
+  }
+
+  /* Ajoutez ces styles à votre fichier CSS */
+.custom-card-departement {
+    border: 1px solid #ddd; /* Ajoutez une bordure */
+    border-radius: 10px; /* Ajoutez des coins arrondis */
+    overflow: hidden; /* Éliminez les coins saillants en cas de contenu dépassant la carte */
+    transition: transform 0.3s; /* Ajoutez une transition pour une animation plus fluide */
+  
+    /* Ajustez la boîte d'ombre pour un effet de surélévation subtil */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .custom-card-departement:hover {
+    transform: translateY(-5px); /* Soulevez légèrement la carte au survol */
+  }
+  
+  .card-body {
+    padding: 20px; /* Ajustez la marge interne pour plus d'espace à l'intérieur de la carte */
+  }
+  
+  /* Ajustez la couleur du texte pour une meilleure lisibilité */
+  .card-body h4,
+  .card-body p {
+    color: #333;
+  }
+  
+  /* Ajustez la couleur de fond pour les cartes */
+  .bg-nude1 {
+    background-color: #f8f4e4; /* Couleur nude 1 */
+  }
+  
+  .bg-nude2 {
+    background-color: #e0d2ab; /* Couleur nude 2 */
+  }
+  
+  /* Ajoutez ces styles à votre fichier CSS */
+h2.text-center.mb-4 {
+    font-family: 'Arial', sans-serif; /* Changez la police du titre */
+    font-size: 28px; /* Ajustez la taille de la police */
+    color: #333; /* Couleur du texte */
+    margin-top: 20px; /* Ajoutez une marge supérieure pour l'espace */
+  }
+  
+  .card-body h4 {
+    font-size: 20px; /* Ajustez la taille de la police du titre du département */
+    margin-bottom: 10px; /* Ajoutez de l'espace en bas du titre */
+  }
+  
+  .card-body p {
+    font-size: 16px; /* Ajustez la taille de la police pour les autres champs */
+    margin-bottom: 8px; /* Ajoutez de l'espace en bas des autres champs */
+  }
+  
+  /* Ajustez la couleur du texte pour une meilleure lisibilité */
+  .card-body h4,
+  .card-body p {
+    color: #333;
+  }
+  
+  

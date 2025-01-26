@@ -1,0 +1,52 @@
+<!-- departement-update.component.html -->
+
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="card-body">
+          <h4 class="card-title">Modifier un département</h4>
+          <form #f="ngForm" (submit)="enregistrerDepartement(f)">
+            <div class="form-group">
+              <label for="nomDepartement">Nom du département</label>
+              <input type="text" class="form-control" id="nomDepartement" name="nomDepartement" [(ngModel)]="departement.nomDepartement" required>
+            </div>
+
+            <div class="form-group">
+              <label for="responsable">Responsable</label>
+              <input type="text" class="form-control" id="responsable" name="responsable" [(ngModel)]="departement.responsable" required>
+            </div>
+
+            <div class="form-group">
+              <label for="nombreProfesseurs">Nombre des employés</label>
+              <input type="number" class="form-control" id="nombreProfesseurs" name="nombreProfesseurs" [(ngModel)]="departement.nombreProfesseurs" required>
+            </div>
+
+            <div class="form-group">
+              <label for="specialite">Spécialité</label>
+              <select id="specialite" name="specialite" class="form-control" [(ngModel)]="departement.specialite" required>
+                <option *ngFor="let specialite of specialites" [value]="specialite.nom">{{ specialite.nom }}</option>
+              </select>
+            </div>
+
+
+
+
+             <!-- departement-update.component.html -->
+
+<div class="form-group">
+  <label for="universite">Affecter à une banque :</label>
+  <select id="universite" [(ngModel)]="selectedUniversiteId" name="universite" required>
+    <option *ngFor="let universite of universites" [value]="universite.idUniversite">{{ universite.nomUniversite }}</option>
+  </select>
+</div>
+
+
+
+
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <a [routerLink]="['/admin/departement/afficher']" class="btn btn-secondary">Annuler</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

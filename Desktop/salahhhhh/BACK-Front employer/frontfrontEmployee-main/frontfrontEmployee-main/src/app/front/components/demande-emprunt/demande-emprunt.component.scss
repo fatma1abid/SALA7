@@ -1,0 +1,36 @@
+#detailedReports {
+    background-image: url('../../../../assets/images/demande1.png');
+    background-size: cover; 
+    background-position: center; 
+    height: 300px; 
+}
+
+
+.card-title{
+    font-weight: 500;
+}
+
+
+.titre{
+    color: rgb(116, 116, 245);
+}
+
+
+p{
+    color: red;
+}
+
+.ng-touched.ng-invalid{
+    border-color: red;
+}
+
+.ng-valid{
+    border-color: green;
+}
+
+
+.btn-secondary{
+    color:white;
+}
+
+ 

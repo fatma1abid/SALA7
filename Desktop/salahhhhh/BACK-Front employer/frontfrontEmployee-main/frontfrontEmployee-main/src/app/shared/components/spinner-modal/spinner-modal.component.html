@@ -1,0 +1,17 @@
+<div [ngClass]="{'fade-in': showSpinner || showMessage, 'hidden': !(showSpinner || showMessage)}">
+  <div class="modal-overlay" (click)="onCloseModal()"></div>
+  <div class="modal-content">
+    <div *ngIf="showSpinner" class="spinner">
+    </div>
+
+    <div *ngIf="showMessage">
+      <div *ngIf="successMessage" class="alert alert-success" role="alert">
+        {{ successMessage }}
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+</div>

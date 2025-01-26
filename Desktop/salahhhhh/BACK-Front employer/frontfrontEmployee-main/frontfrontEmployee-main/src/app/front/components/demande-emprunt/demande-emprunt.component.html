@@ -1,0 +1,87 @@
+
+
+<div class="content-wrapper">
+
+    <div class="row mt-5">
+        <div class="col-md-12 grid-margin mt-3 stretch-card">
+          <div class="card position-relative mt-4">
+              <div id="detailedReports" class="carousel slide detailed-report-carousel position-static pt-2" data-ride="carousel">
+                
+                
+                
+              </div>
+          </div>
+        </div>
+    </div>
+    <div *ngIf="livre$ | async as livre">
+        <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                <h4 class="card-title text-center">Demande d'emprunt pour le livre</h4>
+                <h4 class="card-title text-center titre">{{livre.titre}}</h4>
+
+                <div *ngIf="msg">
+                    <div class="alert alert-success" role="alert">
+                        {{msg}}
+                    </div>
+                </div>
+    
+                <div *ngIf="error">
+                    <div class="alert alert-danger" role="alert">
+                        {{error}}
+                    </div>
+                </div>
+    
+
+                <form class="forms-sample" [formGroup]="empruntForm" (ngSubmit)="emprunterLivre()">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"  formControlName="email"   placeholder="Email">
+                        <div *ngIf="f['email'].touched">
+                            <div *ngIf="f['email'].errors?.['required']" class="error">
+                              <p> <i class="mdi mdi-alert-circle-outline"></i> Veuillez renseigner votre email </p> 
+                            </div>
+                            <div *ngIf="f['email'].errors?.['pattern']" class="error">
+                                <p> <i class="mdi mdi-alert-circle-outline"></i> Votre email n'est pas valide </p> 
+                              </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputDate1">Date début
+                        </label>
+                        <input type="date" class="form-control" id="exampleInputDate1"   formControlName="dateDebutEmprunt">
+                        <div *ngIf="f['dateDebutEmprunt'].touched">
+                            <div *ngIf="f['dateDebutEmprunt'].errors?.['required']" class="error">
+                              <p> <i class="mdi mdi-alert-circle-outline"></i> Veuillez renseigner la date début d'emprunt </p> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputDate1">Date fin </label>
+                        <input type="date" class="form-control" id="exampleInputDate1" formControlName="dateFinEmprunt">
+                        <div *ngIf="f['dateFinEmprunt'].touched">
+                            <div *ngIf="f['dateFinEmprunt'].errors?.['required']" class="error">
+                              <p> <i class="mdi mdi-alert-circle-outline"></i> Veuillez renseigner la date fin d'emprunt </p> 
+                            </div>
+                        </div>
+                       
+                    </div>
+                    
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                        <button class="btn btn-secondary ml-3" (click)="annuler()">Annuler</button>
+                    </div>
+
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    </div>    
+
+</div>
+
+

@@ -1,0 +1,20 @@
+p{
+    color: red;
+}
+
+.ng-touched.ng-invalid{
+    border-color: red;
+}
+
+.ng-valid{
+    border-color: green;
+}
+
+.card-title{
+    font-weight: 500;
+}
+
+.pond{
+    display: flex;
+    justify-content: space-around
+   }

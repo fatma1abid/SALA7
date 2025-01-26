@@ -1,0 +1,56 @@
+.heart-icon {
+    color: red;
+  }
+  .bg-nude1 {
+  background-color: #f2d6b3; /* Exemple de couleur nude */
+}
+
+.bg-nude2 {
+  background-color: #d2a679; /* Exemple de couleur nude */
+}
+
+
+.adresse-text,
+.etat-text {
+  color: black;
+}
+/* styles.css ou styles.scss */
+
+.btn-danger {
+  background-color: #dc3545; /* Couleur rouge pour les boutons favoris */
+  color: white; /* Texte en blanc */
+}
+
+.btn-light {
+  background-color: #f8f9fa; /* Couleur claire pour les boutons non favoris */
+  color: #495057; /* Texte en gris foncé */
+}
+
+.favorite-icon {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.selected {
+  color: red; /* Couleur du cœur sélectionné */
+}
+
+.fa {
+  font-size: 20px;
+}
+
+.fa-heart:before {
+  content: '\2764\fe0f';
+  color: white; /* Couleur du cœur non sélectionné */
+}
+
+
+.fa-times:before {
+  content: '❤️';
+}
+
+img {
+  width: 50%;         /* Ou une autre largeur spécifique */
+  height: auto;        /* Garde les proportions de l'image */
+  object-fit: cover;   /* Si vous voulez que l'image couvre tout le conteneur sans déformation */
+}

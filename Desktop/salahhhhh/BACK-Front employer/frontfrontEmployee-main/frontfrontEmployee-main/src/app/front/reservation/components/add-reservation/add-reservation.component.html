@@ -1,0 +1,71 @@
+ 
+ 
+ <app-list-reservation></app-list-reservation>
+ 
+
+<div class="pond ">
+  <div class="pond col-12 grid-margin stretch-card">
+     <div class="card">
+       <div class="card-body">
+         <h4 class="card-title">Ajouter réservation</h4>
+ 
+         <div *ngIf="msg" class="alert alert-success" role="alert">
+           {{msg}}
+         </div>
+ 
+         <div *ngIf="error" class="alert alert-danger" role="alert">
+           {{error}}
+         </div>
+ 
+         <form class="  forms-sample" [formGroup]="reservationForm" (ngSubmit)="AjouterReservation()" #resForm="ngForm">
+           <div class="form-group">
+            <div class=" ">
+              <div class="form-group col-md-6">
+             <label for="anneeUniversitaire">Année Universitaire</label>
+             <input type="date" class="form-control" id="anneeUniversitaire" placeholder="Année Universitaire"
+               formControlName="anneeUniversitaire">
+             <div class="form-text  ">{{ anneeUniversitaire | date: 'dd/MM/yyyy hh:mm a' }}</div>
+             </div>
+ 
+
+             <div *ngIf="f['anneeUniversitaire'].touched">
+              <div *ngIf="f['anneeUniversitaire'].errors?.['required']" class="error">
+                <p><i class="mdi mdi-alert-circle-outline"></i> Veuillez renseigner la date de reservation</p>
+              </div>
+              <div *ngIf="f['anneeUniversitaire'].errors?.['minlength']" class="error">
+             
+              </div>
+            </div>
+
+ 
+
+
+           <div class="form-group">
+            <label for="exampleSelect1">Type chambre</label>
+            <select class="form-control" id="exampleSelect1" formControlName="typeChambre">
+              <option value="SIMPLE">Simple</option>
+              <option value="DOUBLE">Double</option>
+              <option value="TRIPLE">Triple</option>
+            </select>
+            <div *ngIf="f['typeChambre'].touched">
+              <div *ngIf="f['typeChambre'].errors?.['required']" class="error">
+                <p> <i class="mdi mdi-alert-circle-outline"></i> Veuillez sélectionner le type de chambre </p>
+              </div>
+            </div>
+          </div>
+
+
+
+          </div>
+        </div>
+           <button type="submit" class="btn btn-primary"  [disabled]="reservationForm.invalid">reserver</button>
+           <div> 
+            <qrcode [qrdata]="qrCodeData"> </qrcode>
+     </div>
+        
+          </form>
+        
+       </div>
+     </div>
+  </div>
+ </div> 

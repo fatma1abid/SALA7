@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+
+<div *ngIf="msg">
+    <div class="alert alert-success" role="alert">
+        {{msg}}
+    </div>
+</div>
+
+<div *ngIf="error">
+    <div class="alert alert-danger" role="alert">
+        {{error}}
+    </div>
+</div>
+
+<div mat-dialog-content>
+    <form class="forms-sample" [formGroup]="modificationReservationForm" (ngSubmit)="modifierReservation()">
+
+
+        <div class="form-group">
+            <label for="exampleInputName1">idReservation</label>
+            <input type="number" class="form-control" id="exampleInputName1" placeholder="idReservation" name="idReservation" formControlName="idReservation" [value]="reservation?.idReservation">
+   </div>
+   <div *ngIf="f['idReservation'].touched">
+    <div *ngIf="f['idReservation'].errors?.['required']" class="error">
+      <p> <i class="mdi mdi-alert-circle-outline"></i> Veuillez renseigner l'id  </p> 
+      
+    </div>
+    <div *ngIf="f['idReservation'].errors?.['minlength']" class="error">
+      <p> <i class="mdi mdi-alert-circle-outline"></i> Le   idReservation doit etre valid</p>
+    </div>
+</div>
+            
+ 
+        <div class="form-group">
+            <label for="exampleInputName1">anneeUniversitaire</label>
+            <input type="date" class="form-control" id="exampleInputName1" placeholder="anneeUniversitaire" name="anneeUniversitaire" formControlName="anneeUniversitaire" [value]="reservation?.anneeUniversitaire">
+            <div *ngIf="f['anneeUniversitaire'].touched">
+                <div *ngIf="f['anneeUniversitaire'].errors?.['required']" class="error">
+                  <p> <i class="mdi mdi-alert-circle-outline"></i> Veuillez renseigner la anneeUniversitaire  </p> 
+                  
+                </div>
+                <div *ngIf="f['anneeUniversitaire'].errors?.['minlength']" class="error">
+                  <p> <i class="mdi mdi-alert-circle-outline"></i> Le anneeUniversitaire</p>
+                </div>
+            </div>
+        </div>
+       
+    
+       
+         
+           
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary" [disabled]="modificationReservationForm.invalid" >Modifier</button>
+        </div>    
+    </form>
+</div>

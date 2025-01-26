@@ -1,0 +1,32 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="card-body">
+        <h4 class="card-title">Modifier une banque</h4>
+        <form #f="ngForm" (submit)="enregistrerUniversite(f)">
+          <div class="form-group">
+            <label for="nomUniversite">Nom de la banque</label>
+            <input type="text" class="form-control" id="nomUniversite" name="nomUniversite" [(ngModel)]="universite.nomUniversite" required>
+          </div>
+
+          <div class="form-group">
+            <label for="adresse">Adresse</label>
+            <input type="text" class="form-control" id="adresse" name="adresse" [(ngModel)]="universite.adresse" required>
+          </div>
+
+          <div class="form-group">
+            <label for="etatUniversite">État de la banque</label>
+            <select class="form-control" id="etatUniversite" name="etatUniversite" [(ngModel)]="universite.etatUniversite" required>
+                    <option value="Public">Public</option>
+                    <option value="Prive">Privé</option>
+            </select>
+          </div>
+
+
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+          <a [routerLink]="['/admin/universite/afficher']" class="btn btn-secondary">Annuler</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

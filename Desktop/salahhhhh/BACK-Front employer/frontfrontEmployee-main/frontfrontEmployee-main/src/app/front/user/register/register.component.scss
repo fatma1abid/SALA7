@@ -1,0 +1,26 @@
+.ng-invalid.ng-touched{
+    border-color: red;
+    
+}
+.error{
+    color: red;
+}
+.ng-valid.ng-touched {
+    border-color: green;
+}
+.position-fixed {
+    position: fixed;
+  }
+  
+  .z-index-zero {
+    z-index: 0;
+  }
+  .fade-in-out {
+    transition: opacity 300ms ease-in-out;
+  }
+  
+  .hidden {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }

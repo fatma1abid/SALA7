@@ -1,0 +1,81 @@
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex mb-3">
+              <h4 class="card-title">Liste des livres</h4>
+              <button class="btn btn-info ml-auto" style="color: white;" (click)="ajouter()" >Ajouter livre</button>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Rechercher" aria-label="Rechercher" [formControl]="searchCtrl" >
+                <div class="input-group-append">
+                  <button class="btn btn-sm btn-secondary" type="button">Search</button>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="msg">
+              <div class="alert alert-success" role="alert">
+                  {{msg}}
+              </div>
+            </div>
+
+            <div *ngIf="error">
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead >
+                  <tr>
+                    <th>Image</th>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Auteur</th>
+                    <th>Nombre de page</th>
+                    <th>Date de publication</th>
+                    <th>Categorie</th>
+                    <th>Disponibilité</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr *ngFor="let livreDetails of livreDetailsList" appBackground>
+                    <td><img [src]="urlImage + '/' + livreDetails.livre.idLivre + '/' + livreDetails.livre.image" alt="Livre Image" width="50" height="50"></td>
+                    <td>{{livreDetails.livre.titre | titlecase}}</td>
+                    <td>{{ livreDetails.livre.description | titlecase}}</td>
+                    <td>{{ livreDetails.livre.nomAuteur | titlecase}}</td>
+                    <td>{{ livreDetails.livre.nbPages }}</td>
+                    <td>{{ livreDetails.livre.dateDePublication | date: 'd MMMM yyyy' }}</td>
+                    <td><span class="categorie">{{livreDetails.categorie.nom}}</span></td>
+                    <td> 
+                      <div *ngIf="livreDetails.livre.disponibilite === true">
+                         <div class="badge badge-success"> Disponible</div>
+                      </div>
+                      <div *ngIf="livreDetails.livre.disponibilite === false">
+                         <div class="badge badge-danger">Non disponible</div>
+                      </div>
+                    </td>
+                    <td style="width: 20%;">
+                      <button type="button"  class="btn btn-warning btn-rounded btn-icon" (click)="openModalModification(livreDetails.livre.idLivre,livreDetails.categorie.idCategorie)">
+                          <i class="mdi mdi-grease-pencil"></i>
+                      </button>
+                      <button type="button"  class="btn btn-danger btn-rounded btn-icon ml-3" (click)="openModalSuppression(livreDetails.livre.idLivre)">
+                          <i class="mdi mdi-delete"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>    
+

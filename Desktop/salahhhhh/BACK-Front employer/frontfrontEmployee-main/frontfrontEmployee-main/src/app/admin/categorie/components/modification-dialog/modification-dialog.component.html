@@ -1,0 +1,60 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+
+<div *ngIf="msg">
+    <div class="alert alert-success" role="alert">
+        {{msg}}
+    </div>
+</div>
+
+<div *ngIf="error">
+    <div class="alert alert-danger" role="alert">
+        {{error}}
+    </div>
+</div>
+
+<div mat-dialog-content>
+    <form class="forms-sample" [formGroup]="modificationCategorieForm" (ngSubmit)="modifierCategorie()">
+
+        <div class="form-group">
+            <label for="exampleInputName1">Nom</label>
+            <input type="text" class="form-control" id="exampleInputName1" placeholder="Nom" name="nom" formControlName="nom" [value]="categorie?.nom">
+            <div *ngIf="f['nom'].touched">
+                <div *ngIf="f['nom'].errors?.['required']" class="error">
+                  <p> <i class="mdi mdi-alert-circle-outline"></i> Veuillez renseigner le nom  </p> 
+                  
+                </div>
+                <div *ngIf="f['nom'].errors?.['minlength']" class="error">
+                  <p> <i class="mdi mdi-alert-circle-outline"></i> Le nom doit contenir minimum 3 caractéres</p>
+                </div>
+            </div>
+        </div>
+    
+    
+        <div class="form-group">
+            <label for="exampleTextarea1">Description</label>
+            <textarea class="form-control" id="exampleTextarea1" rows="4" placeholder="Description" name="description" formControlName="description" [value]="categorie?.description" ></textarea>
+            <div *ngIf="f['description'].touched">
+                <div *ngIf="f['description'].errors?.['required']" class="error">
+                  <p> <i class="mdi mdi-alert-circle-outline"></i> Veuillez renseigner la description  </p> 
+                  
+                </div>
+                <div *ngIf="f['description'].errors?.['minlength']" class="error">
+                  <p> <i class="mdi mdi-alert-circle-outline"></i> La description doit contenir minimum 5 caractéres</p>
+                </div>
+            </div>
+        </div>
+    
+         
+        <div class="form-group">
+            <div class="input-group col-xs-12">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile" name="img[]" formControlName="image"  (change)="onFileChanged($event)">
+                    <label class="custom-file-label" for="customFile">{{ selectedFile ? selectedFile.name : categorie?.image }}</label>
+                </div>
+            </div>
+        </div>   
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary" [disabled]="modificationCategorieForm.invalid" >Modifier</button>
+        </div>    
+    </form>
+</div>

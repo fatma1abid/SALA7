@@ -1,0 +1,44 @@
+  <!-- departement-add.component.html -->
+
+  <div class="container">
+      <h2>Ajouter un département</h2>
+        <form (ngSubmit)="ajouterDepartement()" #departementForm="ngForm">
+        <div class="form-group">
+          <label for="nomDepartement">Nom du département:</label>
+          <input type="text" id="nomDepartement" [(ngModel)]="nouveauDepartement.nomDepartement" name="nomDepartement" required>
+        </div>
+
+        <div class="form-group">
+          <label for="responsable">Responsable:</label>
+          <input type="text" id="responsable" [(ngModel)]="nouveauDepartement.responsable" name="responsable" required>
+        </div>
+
+        <div class="form-group">
+          <label for="nombreProfesseurs">Nombre de employés:</label>
+          <input type="number" id="nombreProfesseurs" [(ngModel)]="nouveauDepartement.nombreProfesseurs" name="nombreProfesseurs" required>
+        </div>
+
+        <div class="form-group">
+          <label for="specialite">Spécialité:</label>
+          <select id="specialite" [(ngModel)]="nouveauDepartement.specialite" name="specialite" required>
+            <option *ngFor="let specialite of specialites" [value]="specialite.id">{{ specialite.nom }}</option>
+          </select>
+        </div>
+
+
+        <div class="form-group">
+          <label for="universite">Banque:</label>
+          <select id="universite" [(ngModel)]="selectedUniversiteId" name="universite" required>
+            <option *ngFor="let universite of universites" [value]="universite.idUniversite">{{ universite.nomUniversite }}</option>
+          </select>
+        </div>
+
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" >Ajouter Département</button>
+        </div>
+      </form>
+    </div>

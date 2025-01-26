@@ -1,0 +1,74 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+
+<div *ngIf="msg">
+    <div class="alert alert-success" role="alert">
+        {{msg}}
+    </div>
+</div>
+
+<div *ngIf="error">
+    <div class="alert alert-danger" role="alert">
+        {{error}}
+    </div>
+</div>
+
+<div mat-dialog-content>
+    <form class="forms-sample" [formGroup]="modificationChambreForm" (ngSubmit)="modifierChambre()">
+
+
+        <div class="form-group">
+            <label for="exampleInputName1">id Chambre</label>
+            <input type="number" class="form-control" id="exampleInputName1" placeholder="idChambre" name="idChambre" formControlName="idChambre" [value]="chambre?.idChambre">
+   </div>
+   <div *ngIf="f['idChambre'].touched">
+    <div *ngIf="f['idChambre'].errors?.['required']" class="error">
+      <p> <i class="mdi mdi-alert-circle-outline"></i> Veuillez renseigner l'id  </p> 
+      
+    </div>
+    <div *ngIf="f['numeroChambre'].errors?.['minlength']" class="error">
+      <p> <i class="mdi mdi-alert-circle-outline"></i> Le nom doit contenir minimum 1 caractéres</p>
+    </div>
+</div>
+            
+ 
+        <div class="form-group">
+            <label for="exampleInputName1">numero chambre</label>
+            <input type="number" class="form-control" id="exampleInputName1" placeholder="numeroChambre" name="numeroChambre" formControlName="numeroChambre" [value]="chambre?.numeroChambre">
+            <div *ngIf="f['numeroChambre'].touched">
+                <div *ngIf="f['numeroChambre'].errors?.['required']" class="error">
+                  <p> <i class="mdi mdi-alert-circle-outline"></i> Veuillez renseigner le numero  </p> 
+                  
+                </div>
+                <div *ngIf="f['numeroChambre'].errors?.['minlength']" class="error">
+                  <p> <i class="mdi mdi-alert-circle-outline"></i> Le nom doit contenir minimum 1 caractéres</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="exampleTextarea1">type de Chambre</label>
+           
+
+
+            <select class="form-control" id="exampleTextarea1" rows="2" placeholder="typeChambre" name="typeChambre" formControlName="typeChambre" [value]="chambre?.typeChambre" > 
+                <option value="SIMPLE">Simple</option>
+                <option value="DOUBLE">Double</option>
+                <option value="TRIPLE">Triple</option></select>
+            <div *ngIf="f['typeChambre'].touched">
+                <div *ngIf="f['typeChambre'].errors?.['required']" class="error">
+                  <p> <i class="mdi mdi-alert-circle-outline"></i> Veuillez renseigner la typeChambre  </p> 
+                  
+                </div>
+                <div *ngIf="f['typeChambre'].errors?.['minlength']" class="error">
+                  <p> <i class="mdi mdi-alert-circle-outline"></i> La typeChambre doit contenir minimum 5 caractéres</p>
+                </div>
+            </div>
+        </div>
+    
+         
+           
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary" [disabled]="modificationChambreForm.invalid" >Modifier</button>
+        </div>    
+    </form>
+</div>

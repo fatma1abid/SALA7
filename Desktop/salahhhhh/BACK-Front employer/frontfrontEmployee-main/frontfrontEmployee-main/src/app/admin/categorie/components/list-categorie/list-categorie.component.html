@@ -1,0 +1,63 @@
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex mb-3">
+              <h4 class="card-title">Liste des categories</h4>
+              <button class="btn btn-info ml-auto" style="color: white;" (click)="ajouter()">Ajouter categorie</button>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Rechercher" aria-label="Rechercher" [formControl]="searchCtrl" >
+                <div class="input-group-append">
+                  <button class="btn btn-sm btn-secondary" type="button">Search</button>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="msg">
+              <div class="alert alert-success" role="alert">
+                  {{msg}}
+              </div>
+            </div>
+
+            <div *ngIf="error">
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+            </div>
+            <div class="table table-responsive">
+              <table class="table">
+                <thead >
+                  <tr>
+                    <th>Image</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr *ngFor="let categorie of filteredCategorieList | async" appBackground>
+                    <td><img [src]="urlImage + '/' + categorie.idCategorie + '/' + categorie.image" alt="Category Image" width="50" height="50"></td>
+                    <td>{{categorie.nom | titlecase}}</td>
+                    <td>{{categorie.description | titlecase}}</td>
+                    <td style="width: 20%;">
+                        <button type="button"  class="btn btn-warning btn-rounded btn-icon" (click)="openModalModification(categorie.idCategorie)">
+                          <i class="mdi mdi-grease-pencil"></i>
+                      </button>
+                      <button type="button"  class="btn btn-danger btn-rounded btn-icon ml-3" (click)="openModalSuppression(categorie.idCategorie)">
+                          <i class="mdi mdi-delete"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>    

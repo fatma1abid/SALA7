@@ -1,0 +1,7 @@
+
+<h1 mat-dialog-title style="color: white;"> {{data.title}}</h1>
+<div mat-dialog-content style="color: white;">{{data.content}}</div>
+<div mat-dialog-actions>
+  <button mat-button class="btn btn-primary" (click)="confirm()">Oui</button>
+  <button mat-button class="btn btn-primary"   (click)="non()"mat-dialog-close cdkFocusInitial>Non</button>
+</div>

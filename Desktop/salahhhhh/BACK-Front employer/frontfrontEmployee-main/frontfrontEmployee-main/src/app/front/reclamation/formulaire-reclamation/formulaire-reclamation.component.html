@@ -1,0 +1,66 @@
+
+<div class="main-panel" >        
+    <div class="content-wrapper">
+        <div class="row">
+<!-- Button trigger modal 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Ajouter reclamation
+</button>  -->
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Reclamation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+   
+          <div class="card">
+            <div class="card-body">
+              <h4  *ngIf="!isEdit" class="card-title">Ajouter Reclamation</h4>
+              <h4  *ngIf="isEdit" class="card-title">Modifier Reclamation</h4>
+
+              <p  class="card-description">
+                Vous devez entrer le sujet et les details de votre reclamation
+              </p>
+             
+              <form class="forms-sample" [formGroup]="reclamationForm" (ngSubmit)="onSubmitForm()">
+                <div class="form-group">
+                  <label for="exampleInputUsername1">Sujet</label>
+                  <input formControlName="sujet" type="text" class="form-control" id="exampleInputUsername1" placeholder="Sujet">
+                  <div *ngIf="myControls['sujet'].touched && myControls['sujet'].invalid">
+                    <div *ngIf="myControls['sujet'].errors && myControls['sujet'].errors['required']" class="error">sujet obligatoire
+                    </div>
+                   </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Description</label>
+                  <textarea formControlName="description" class="form-control" id="exampleTextarea1" rows="4" placeholder="Description">    
+                  <div *ngIf="myControls['description'].touched && myControls['description'].invalid">
+                    <div *ngIf="myControls['description'].errors && myControls['description'].errors['required']" class="error">
+                        description obligatoire
+                    </div>
+                   </div> 
+                </textarea> 
+                </div>
+                <button type="submit" class="btn btn-primary mr-2" [disabled]="reclamationForm.invalid">  {{ isEdit ? 'Modifier' : 'Ajouter' }}
+                </button>
+              </form>
+
+            </div>
+            <app-alert *ngIf="showAlert" [type]="alertType" [message]="alertMessage"></app-alert>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="isEdit = false">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+        </div>
+  </div>
+</div>

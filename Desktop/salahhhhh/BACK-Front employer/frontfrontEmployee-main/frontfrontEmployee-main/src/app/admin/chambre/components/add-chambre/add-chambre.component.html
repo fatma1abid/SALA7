@@ -1,0 +1,63 @@
+
+<app-list-chambre> </app-list-chambre>
+
+<div class="content-wrapper">
+    <div class="col-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Ajouter chambre</h4>
+  
+          <div *ngIf="msg">
+            <div class="alert alert-success" role="alert">
+              {{msg}}
+            </div>
+          </div>
+  
+          <div *ngIf="error">
+            <div class="alert alert-danger" role="alert">
+              {{error}}
+            </div>
+          </div>
+  
+          <form class="forms-sample" [formGroup]="chambreForm" (ngSubmit)="AjouterChambre()">
+  
+
+            <div class="form-group">
+              <label for="exampleInputName1">Numero</label>
+              <input type="number" class="form-control" id="exampleInputName1" placeholder="numero" formControlName="numero">
+              <div *ngIf="f['numero'].touched">
+                <div *ngIf="f['numero'].errors?.['required']" class="error">
+                  <p> <i class="mdi mdi-alert-circle-outline"></i> Veuillez renseigner le numero </p>
+                </div>
+                <div *ngIf="f['numero'].errors?.['minlength']" class="error">
+                  <p> <i class="mdi mdi-alert-circle-outline"></i> Le numero doit contenir minimum 1 caractère</p>
+                </div>
+              </div>
+            </div>
+
+         
+
+  
+
+
+            <div class="form-group">
+              <label for="exampleSelect1">Type chambre</label>
+              <select class="form-control" id="exampleSelect1" formControlName="typechambre">
+                <option value="SIMPLE">Simple</option>
+                <option value="DOUBLE">Double</option>
+                <option value="TRIPLE">Triple</option>
+              </select>
+              <div *ngIf="f['typechambre'].touched">
+                <div *ngIf="f['typechambre'].errors?.['required']" class="error">
+                  <p> <i class="mdi mdi-alert-circle-outline"></i> Veuillez sélectionner le type de chambre </p>
+                </div>
+              </div>
+            </div>
+  
+            <button type="submit" class="btn btn-primary" [disabled]="chambreForm.invalid">Ajouter Chambre</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

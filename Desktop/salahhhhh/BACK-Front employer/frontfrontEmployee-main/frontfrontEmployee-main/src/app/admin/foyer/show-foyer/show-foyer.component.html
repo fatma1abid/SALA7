@@ -1,0 +1,68 @@
+
+<div class="card" >
+    <div class="card-body">
+        <div class="row " >
+<div  >
+    <img src="../../assets/images/Foyer.png" alt="user" style="width: 1060px; height: 350px; border-radius: 10px; box-shadow: 0 20px 20px rgba(88, 86, 86, 0.92);">
+    <div>
+<div>
+
+</div>
+
+<table class="table my-5" style="box-shadow: 0 20px 20px rgba(88, 86, 86, 0.92); border-radius: 20px">
+    <thead class=" text-primary">
+
+        <th>
+           image
+        </th>
+        <th>
+         Nom agence
+        </th>
+        <th>
+            capacite agence
+        </th>
+
+       
+
+        <th>
+            Modifier
+        </th>
+
+        <th>
+            Supprimer
+        </th>
+      </thead>
+
+      <tbody *ngFor="let a of listFoyer">
+        <tr >
+
+          <td><img src="{{a.image}}" style="height: 100px; width: 120px;"  /></td>
+          <td>{{a.nomFoyer}}</td>
+          <td>{{a.capaciteFoyer}}</td>
+
+          <td *ngIf="a.blocs.length!=0"><input type="button" class="btn btn-light" value="Consulter blocs" (click)="Consulter(a.idFoyer)"/></td>
+          <td *ngIf="a.blocs.length==0"><input type="button" class="btn btn-light" disabled value="Consulter blocs"/></td>
+
+
+          <td>   <button type="button" class="btn btn-light" style="border-radius: 50px; margin-left: 40px;" (click)="Affecterdesbloc(a.nomFoyer)">
+            <i class="fa-solid fa-plus" style="color: #266bc5;"></i>
+          </button>
+        </td>
+
+
+
+          <td>   <button type="button" class="btn btn-light" style="border-radius: 50px; margin-left: 20px;" (click)="modifier(a.idFoyer)">
+            <i class="fa-solid fa-pen" style="color: #3c804d;" ></i>
+          </button>
+        </td>
+
+          <td>   <button type="button" class="btn btn-light" style="border-radius: 50px; margin-left: 30px;" (click)="supprimer(a)">
+            <i class="fa-solid fa-trash" style="color: #c12534;"></i>
+          </button>
+        </td>
+
+        </tr>
+        </tbody>
+    </table></div>
+    </div>
+</div>

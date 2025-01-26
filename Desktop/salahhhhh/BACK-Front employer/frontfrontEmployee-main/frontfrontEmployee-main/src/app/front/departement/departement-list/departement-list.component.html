@@ -1,0 +1,19 @@
+<div class="container">
+  <img src="assets/images/departement.jpg" class="img-fluid w-100" alt="Image Alt Text">
+  <h2 class="text-center mb-4">Liste des départements</h2>
+  <input type="text" [(ngModel)]="nomDepartementRecherche" placeholder="Rechercher par nom" class="form-control mb-3" />
+
+  <div class="row justify-content-center">
+    <div class="col-md-6" *ngFor="let departement of departements | filter: nomDepartementRecherche:'nomDepartement'; trackBy: trackByFn; let i = index">
+
+      <div class="custom-card-departement mb-4" [ngClass]="{'bg-nude1': i % 2 === 0, 'bg-nude2': i % 2 !== 0}">
+        <div class="card-body text-dark">
+          <h4 class="card-title">{{ departement.nomDepartement }}</h4>
+          <p class="card-text"><strong>Responsable:</strong> {{ departement.responsable }}</p>
+          <p class="card-text"><strong>Nombre des employés:</strong> {{ departement.nombreProfesseurs }}</p>
+          <p class="card-text"><strong>Spécialité:</strong> {{ departement.specialite }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

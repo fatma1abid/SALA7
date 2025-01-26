@@ -1,0 +1,29 @@
+<div style="box-shadow: 0 20px 20px rgba(88, 86, 86, 0.92); border-radius: 20px; margin-left: 220px; width: 550px; height: 520px; background-image: url('../../assets/img/etu.gif'); " >
+    <div  >
+      <div class="row " >
+        <div class="col-md-12">
+          <div class="card-body container-fluid" style="margin-top: 100px; margin-left: 120px;">
+            <div class="position-relative ">
+              <form  >
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <label class="" aria-hidden="true">Nom Bloc</label>
+                  <input type="text"   [(ngModel)]= "bloc.nomBloc" placeholder="Nom de Bloc " [value]="formData.nomBloc" name="nomBloc" class="form-control">
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-4">
+                  <label class="" aria-hidden="true">Capacité de Bloc</label>
+                  <input type="number" [(ngModel)]= "bloc.capaciteBloc" placeholder="Capacité de Bloc" [value]="formData.capaciteBloc" name="capaciteBloc" class="form-control">
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <label class="">Liste des chambres</label>
+                  <select type="text" [(ngModel)]= "bloc.chambres" placeholder="liste des chambres" [value]="formData.chambres" name="liste des chambres" class="form-control">
+                    <option [(ngModel)]= "bloc.chambres" name="chambres" ></option>
+                </select>
+                </div>
+
+                <div class="mt-2">
+                  <button type="submit" (click)="updateBloc()" style="margin-left: 100px;" class="btn btn-success">Modifier</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>  

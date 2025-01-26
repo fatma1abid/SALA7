@@ -1,0 +1,63 @@
+<div class="row">
+<div class="col-md-4" >
+    <img src="../../assets/img/blocs.png" alt="user" style="width: 320px; height: 350px; box-shadow: 0 20px 20px rgba(88, 86, 86, 0.92); border-radius: 20px" class="my-2">
+
+    
+</div>
+<div class="col-md-4" style="box-shadow: 0 20px 20px rgba(88, 86, 86, 0.92); border-radius: 20px; width: 720px;">
+<table class="table my-5  " >
+    <thead class=" text-primary">
+        
+        <th>
+         Nom Bloc
+        </th>
+        <th>
+            capacite Bloc
+        </th>
+      
+        <th>
+            nombre des Chambre
+        </th>
+        <th>
+            Consulter les Chambre
+        </th>
+    
+        
+        <th>
+            Modifier
+        </th>
+ 
+        <th>
+            Supprimer
+        </th>
+        
+      </thead>
+  
+    
+      <tbody *ngFor="let a of ListBloc" appZoomFoyer appColorbackground >
+        <tr style="  border-radius: 20px;"  >
+          
+      
+          <td >{{a.nomBloc}}</td>
+          <td>{{a.capaciteBloc}}</td>
+   
+          <td>{{a.chambres}}</td>
+        
+
+          <td>   <button type="button" class="btn btn-light" style="border-radius: 50px; margin-left: 20px;" (click)="Consulter()">
+            <i class="fa-solid fa-user" style="color: #80753c;" ></i> 
+          </button>
+        </td>
+          <td>   <button type="button" class="btn btn-light" style="border-radius: 50px; margin-left: 20px;" (click)="modifier(a.idBloc)">
+            <i class="fa-solid fa-pen" style="color: #3c804d;" ></i> 
+          </button>
+        </td>
+        <td>   <button type="button" class="btn btn-light" style="border-radius: 50px; margin-left: 30px;" (click)="supprimer(a)">
+            <i class="fa-solid fa-trash" style="color: #c12534;"></i>
+          </button>
+        </td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+</div>

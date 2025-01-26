@@ -1,0 +1,32 @@
+span{
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 8%;    
+    margin-top: 2%;
+}
+
+img{
+    margin-left: 6%;
+    border-radius: 50%;
+    padding: 10%;
+    background-color: rgba(0,0,0,0.04);
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+   
+}
+
+.hovered img {
+    transform: scale(0.6);
+}
+
+
+#detailedReports {
+    background-image: url('../../../../assets/images/banniere4.png');
+    background-size: cover; 
+    background-position: center; 
+    height: 300px; 
+}

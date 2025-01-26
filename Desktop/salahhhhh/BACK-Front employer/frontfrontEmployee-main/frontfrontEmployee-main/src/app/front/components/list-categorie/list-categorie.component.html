@@ -1,0 +1,33 @@
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin mt-3 stretch-card">
+          <div class="card position-relative  mt-4">
+              <div id="detailedReports" class="carousel slide detailed-report-carousel position-static pt-2" data-ride="carousel">
+                
+                
+                <a class="carousel-control-prev" href="#detailedReports" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#detailedReports" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    <h2>Les categories </h2>
+    <div class="row">
+        <div class="col-md-2 grid-margin"  *ngFor="let categorie of categorieList | async">
+            <div class="image-container" [ngClass]="{'hovered': categorie.isHovered}"  (mouseover)="onMouseOver(categorie)" (mouseout)="onMouseOut(categorie)">
+                <img [src]="urlImage + '/' + categorie.idCategorie + '/' + categorie.image" alt="Category Image" width="150" height="150" (click)="getLivresByCategory(categorie.idCategorie)">
+                <span class="d-flex justify-content-center align-items-center text-center grid-margin">{{categorie.nom | titlecase}}</span>
+            </div>
+        </div>
+    </div>      
+</div>

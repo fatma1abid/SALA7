@@ -1,0 +1,66 @@
+<div style="box-shadow: 0 20px 20px rgba(88, 86, 86, 0.92); margin-left: 20px;" >
+
+  <div class="row" >
+    <div class="col-md-4">
+      <img src="../../assets/img/jj.gif"  style="width: 360px; height: 440px; " >
+
+    </div>
+
+    <div class="col-md-4"
+      style=" border-radius: 20px; margin-left: 30px; width: 550px; height: 520px;  background-color: white; ">
+
+
+
+      <form #f="ngForm">
+        <div>
+          <label aria-hidden="true">Nom agence</label>
+          <input type="text" [(ngModel)]="foyer.nomFoyer" placeholder="Nom de l'agence" name="nom" #n="ngModel"
+            class="form-control" required="" >
+        </div>
+        <div style="color: brown;" *ngIf="n.errors?.['required'] " class="alert alert-danger my-2">
+
+          le champ nom agence est obligatoire *
+        </div>
+
+
+        <div class="my-2">
+          <label>Image</label>
+          <input type="file" [(ngModel)]="foyer.image" #i="ngModel" name="imagr" required="">
+        </div>
+        <div style="color: brown;" *ngIf="i.errors?.['required']" class="alert alert-danger my-2">
+
+          le champ image est obligatoire *
+        </div>
+
+
+        <div>
+
+          <label aria-hidden="true">Capacité de l'agence</label>
+          <input type="text" [(ngModel)]="foyer.capaciteFoyer" minlength='3' #c="ngModel"
+            placeholder="Capacité de l'agence" required="" name="capaciteFoyer" class="form-control">
+        </div>
+        <div style="color: brown;" *ngIf="c.errors?.['required']" class="alert alert-danger my-2">
+
+          le champ capacite agence est obligatoire *
+        </div>
+        <div style="color: brown;" *ngIf="c.errors?.['minlength']" class="alert alert-danger my-2">
+
+          le champ capacite agence doit etre superieur ou egale a 100
+        </div>
+
+
+
+        <div class="mt-2">
+          <button type="submit" (click)="addFoyer()" style="margin-left: 100px;" [disabled]="f.invalid"
+            class="btn btn-success">Ajouter</button>
+        </div>
+      </form>
+
+
+      <div class="col-md-4">
+
+      </div>
+    </div>
+
+  </div>
+</div>

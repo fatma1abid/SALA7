@@ -1,0 +1,49 @@
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-md-12 grid-margin stretch-card mt-3">
+      <div class="card position-relative mt-4">
+          <div id="detailedReports"  style="background-image: url('{{ imageBanniere }}');" class="carousel slide detailed-report-carousel position-static pt-2" data-ride="carousel">
+           
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    <div class="row">
+
+      <div *ngIf="(livreList | async)?.length === 0">
+        <div class="col-md-12 grid-margin stretch-card" >
+          <div class="card">
+            <div class="card-body">
+              <p class="text-center" style="font-size: 18px; color: #4B49AC; ">Nous regrettons de vous informer qu'actuellement, il n'y a aucun livre disponible pour cette catégorie , nos collections sont régulièrement mises à jour alors n'hésitez pas à revenir ultérieurement pour découvrir de nouveaux livres passionnants.  </p>
+            </div>
+          </div>
+        </div>
+     </div>
+       
+     
+      <div class="col-md-2 grid-margin stretch-card" *ngFor="let livre of livreList | async">
+            <div class="card">
+              <div class="card-body">
+               <div class="d-flex flex-column justify-content-between">
+                <img [src]="urlImage + '/' + livre.idLivre + '/' + livre.image" alt="Livre Image" width="135" height="150">
+                <p class="card-title mt-3 d-flex justify-content-center align-items-center text-center grid-margin">{{livre.titre}}</p>
+                <div *ngIf="livre.disponibilite === true" class="d-flex justify-content-center">  <p class="badge badge-success">Disponible</p> </div>
+                <div *ngIf="livre.disponibilite === false" class="d-flex justify-content-center">  <p class="badge badge-danger">Non disponible</p> </div>
+                <button class="btn btn-success btn-rounded btn-fw" (click)="openModalDetails(livre.idLivre)">Details</button>
+               </div>
+              </div>
+            </div>
+            
+      </div>
+
+     <!--- <div class="col-md-2 grid-margin stretch-card">
+          <app-livre  *ngFor="let livre of livreList | async" [livre]="livre" ></app-livre>
+      </div>-->
+      
+      
+    </div>
+
+   

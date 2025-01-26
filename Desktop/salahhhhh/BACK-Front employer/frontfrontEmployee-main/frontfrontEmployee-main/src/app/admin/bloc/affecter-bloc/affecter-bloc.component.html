@@ -1,0 +1,39 @@
+<div style=""  >
+    <img src="../../assets/img/blocs.png" alt="user" style="width: 1070px; height: 350px; margin-left: 10px; border-radius: 10px; box-shadow: 0 20px 20px rgba(88, 86, 86, 0.92);">
+    <div>
+<div>
+<div>
+    
+</div>
+<table class="table my-3" >
+    <thead class=" text-primary">
+        
+        <th>
+         Nom Bloc
+        </th>
+        <th>
+            capacite Bloc
+        </th>
+      
+        <th>
+            nombre des Chambre
+        </th>
+        <th>
+            Affecter des blocs
+        </th>
+    
+      </thead>
+
+      <tbody *ngFor="let a of ListBloc">
+        <tr >
+          
+      
+          <td>{{a.nomBloc}}</td>
+          <td>{{a.capaciteBloc}}</td>
+   
+          <td>{{a.chambres}}</td>
+
+          <td><input type="button" class="btn btn-primary" value="Affecter" (click)="  affecterBloc(a.nomBloc)"/></td>
+          </tr>
+        </tbody>
+    </table>
